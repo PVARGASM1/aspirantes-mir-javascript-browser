@@ -1,0 +1,41 @@
+
+.realizada {
+ text-decoration: line-through cornflowerblue;
+ 
+}
+ #bienvenida {
+ font-style: normal;
+ color: blueviolet;
+ font-weight: 600;
+ }
+
+body {
+    background-color: blueviolet;
+}
+
+#fecha {
+ color: rgb(92, 92, 167);
+}
+h1 {
+    padding-top: var(30px);
+    color: #e2ecf6;
+    font-size: 30px;
+    text-align: center;
+}
+input{
+    padding: 5px, 15px, 5px, 15px;
+  
+}
+
+#formulario {
+        background-color: #e2ecf6;
+        max-width: 350px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    text-align: center;
+}
