@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Local Storage</title>
+  </head>
+  <body>
+    <form>
+      <label for="name">Ingresa tu nombre</label>
+      <input type="text" id="name" name="name" placeholder="Ingresa tu nombre">
+      <label for="email">Ingresa tu correo</label>
+      <input id="correo" type="email" placeholder="Ingresa tu correo">
+      <button type="submit">Guardar</button>
+      
+    </form>
+    <section>   
+    </section>
+    <div id="respuesta">
+        <button id="borrar" onclick="deleteName()">Eliminar valor</button>
+    </div>
+    <script >
+      // Obtener elementos del DOM
+      const form = document.querySelector('form');
+      const input = document.querySelector('input');
+      const section = document.querySelector('section');
+      const correo =document.getElementById('correo') 
+         
+      // Manejar el evento de enviar el formulario
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let name = input.value
+        let email = correo.value
+
+        if(!name == ""){
+          let data = {
+          name: name,
+          email: email
+        }
+            localStorage.setItem('userdata', JSON.stringify(data))
+            section.textContent = ""
+            form.reset();
+        }
+       
+      });
+
+      // Función para mostrar el nombre guardado en localStorage
+     form.addEventListener('submit', function showName(evento) {
+         evento.preventDefault();
+         if (!localStorage.getItem('userdata')){
+          //alert("No hay datos")
+            section.textContent = "No hay datos"
+         }
+         })
+
+      // Función para borrar el nombre guardado en localStorage
+      function deleteName(){
+        localStorage.removeItem('userdata');
+      }
+    
+      // Mostrar el nombre guardado al cargar la página
+      let borrar = document.getElementById('borrar')
+      borrar.addEventListener('onclick', deleteName);
+
+     window.addEventListener('load', function mostarNombre() {
+      const dato = localStorage.getItem('userdata');
+      if (dato){
+          section.textContent = dato
+      }
+      else {
+        section.textContent = "No hay datos en el localStorage";
+      }  
+     })
+    
+    </script>
+  </body>
+</html>
